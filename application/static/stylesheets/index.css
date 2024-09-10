@@ -1,0 +1,170 @@
+@charset "utf-8";
+
+body{
+    background-color: #00be5f67;
+}
+
+/* all animation start form here  */
+@keyframes invisible {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+
+@keyframes expand-width {
+    from{
+        width: 0;
+    }
+    to{
+        width: 100vw;
+    }
+}
+/* animation defination end here  */
+/* main style start here  */
+main{
+    width: 100%;
+    height: 97vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid red; */
+}
+.container{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.container > h2{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #400080;
+}
+
+.app-logo{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;  
+    margin: 1em;  
+}
+a{
+    text-decoration-line: none;
+    color: inherit;
+}
+
+.btn{
+    background-color: purple;
+    padding: 0.4em;
+    color: #fff;
+    border-radius: 0.3em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* border: 3px solid red; */
+    margin: auto 1em;
+    transition: opacity 0.5s linear;
+    }
+    
+.click-btn{
+    animation: invisible 1s linear 0s 1 normal forwards;
+}
+.left{
+    width: 0;
+    height: 100vh;
+    background-color: #400080c7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.5s linear;
+    overflow: hidden;
+}
+
+.right{
+    width: 0;
+    height: 100vh;
+    background-color: #800040c7;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: width 0.5s linear;
+    overflow: hidden;
+}
+
+.expand{
+    animation: expand-width 0.5s linear 0s 1 normal forwards;
+    z-index: 10;
+}
+
+.arrow-container{
+    width: 100px;
+    height: 100px;
+    background-color: rgba(49, 49, 49, 0.671);
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.left-child{
+    position: absolute;
+    top: 40vh;
+    right: -4.2em;
+    border-radius: 30%;
+    cursor: pointer;
+}
+
+.left-child:hover svg{
+    color: #400080;
+}
+
+.right-child{
+    position: absolute;
+    top: 40vh;
+    left: -4.2em;
+    border-radius: 30%;
+    cursor: pointer;
+    transform: rotate(180deg);
+}
+
+.right-child:hover svg{
+    color: #800040;
+}
+.left-house, .right-house{
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+form > label{
+    text-align: center;
+    color: #fff;
+    font-size: larger;
+    margin: 0.5em;
+}
+
+form > input, .buttons > input[type="submit"], .buttons > input[type="reset"]{
+    font-size: larger;
+    padding: 0.4em;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    color: purple;
+}
+
+.buttons > input[type="submit"], .buttons > input[type="reset"]{
+    width: 5em;
+    margin: 1em 0.5em 0.5em 0;
+}
+
+.buttons > input[type="reset"]{
+    float: right;
+
+}
+/* main style end here  */

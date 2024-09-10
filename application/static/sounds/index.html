@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio</title>
+</head>
+<body>
+    <h1 align="center">Below will apear</h1>
+    <video src="/application/static/updates/30 MARCH.mp4" id="video" controls></video>
+    <audio src="/application/static/sounds/track1.m4a" id="audio" controls align="center" autoplay>Hello</audio>
+    <script>
+        function call(){
+            setTimeout(()=>{
+                console.log('Hello from waiting');
+            }, 5000)
+            console.log('Outside of timeout.');
+        }
+
+        call()
+        // call()
+    </script>        
+    
+</body>
+</html>

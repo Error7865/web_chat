@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block title %}Chat{% endblock %}
+{% block head %}
+    {{super()}}
+    <link rel="stylesheet" href="{{url_for('static', filename='stylesheets/home.css')}}">
+{% endblock %}
+{% block content %}
+{{super()}}
+<header>
+    <div class="empty-div">
+        
+    </div>
+        <div class="config">
+            <h3 class="close visible">&times;</h3>
+            <div class="profile-container visible">
+                <img src="{{current_user.profile_image()}}" alt="" class="dp visible">
+            </div>
+            <div class="selfinfo visible">
+                <h2 class="name visible">Name : <input type="text" name="username" value="{{current_user.username}}" class="self-name visible"></h2>
+                <button id="save" class="visible hide">Save</button>
+            </div>
+        </div>
+        <div class="viewer hide">
+            <h3 class="close">&times;</h3>
+            <div class="subview">
+
+            </div>
+        </div>
+        <div class="profile-pic hide">
+            <img src="{{current_user.profile_image()}}" alt="user profile" id="user_profile_pic" data-userkey="{{current_user.user_key}}" data-email="{{current_user.email}}">
+        </div>
+        <ul class="options">
+            <li class="option chat"><a href="">Chat</a></li>
+            <li class="option update"><a href="">Update</a></li>
+            <li class="option dots">Config</li>
+            <div class="active-bar"></div>
+            <li class="option search-container">
+                <input type="email" name="search-box" id="search-box" placeholder="Enter email">
+            </li>
+            <li class="option search-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <div class="contacts">
+            <ul class="users">
+                <div class="add-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg>
+                </div>                
+                {% for msg in msg_ls %}
+                <li class="user">
+                    <img src="{{msg.profile}}" alt="user-pic" class="user-profile-pic">
+                    <a href="" class="info">{{msg.email}} {% if msg.unseen != 0 %}<span class="number-msg"> {{msg.unseen}}</span>
+                    {% endif %}
+                    </a>
+                </li>
+                {% endfor %}
+                <li class="my-updates hide">
+                    <img src="{{current_user.profile_image()}}" alt="" id="user-update", class="user-profile-pic">
+                    <form action="" method="" enctype="multipart/form-data">
+                        <div class="add_update">
+                            <input type="file" name="" id="update-input" accept="image/jpeg, image/png, video/mp4, video/avi">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi-plus" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>
+                        </div>
+                        <a href="" class="update">Add update</a>
+                        <div class="update-container hide">
+                            <h5 class="close">&times;</h5>
+                            <video src="" class="user-update-media hide" id="video"></video>
+                            <img src="" alt="" id="image" class="user-update-media hide">
+                            <input type="submit" value="Update" id="submit">
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <!-- swap chatbox when no chat present else leave it -->
+        <div class="chatcontainer">
+            <div class="empty-box">
+                <img src="{{url_for('static', filename='images/camel1.png')}}" alt="random" class="empty">
+            </div>
+            <div class="chat-info hide">
+                <input type="hidden" id="to">
+                <div class="chat-container">
+                    {#<div class="user-chat">
+                        <p class="user-data">Hello?</p><p class="tooltip"></p>
+                    </div>
+                    <div class="subuser-chat">
+                        <p class="tooltip"></p>
+                        <p class="subuser-data">How are you?</p>
+                    </div>#}
+                </div>
+
+                <div class="bottom-part">
+                    <p class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="folder " viewBox="0 0 16 16">
+                            <path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139q.323-.119.684-.12h5.396z"/>
+                          </svg>
+                    </p>
+                    <textarea name="msg" id="message" placeholder="Message...."></textarea>
+                    <button id="send">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi-send" viewBox="0 0 16 16">
+                            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block footer %}
+    {{super()}}
+        <div class="pic-container ">
+            <div class="pic">
+                <p class="cross">&times;</p>
+                <img src="" alt="" id="profile-picture">
+            </div>
+            <div class="icons info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi-info-circle icon" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                </svg>
+            </div>                
+        </div>
+        <script src="{{url_for('static', filename='js/socketio.js')}}"></script>        
+        <script  src="{{url_for('static', filename='js/home.js')}}"></script>
+        <script  src="{{url_for('static', filename='js/homeStyle.js')}}"></script>
+{% endblock %}
+
+<!-- 7908572855 -->

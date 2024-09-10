@@ -1,0 +1,8 @@
+#ignore virtual environment
+vir_env/
+#ignore py cache 
+__pycache__/
+#igoner local media
+application/static/media/*
+#ignore webdriver
+webdriver/

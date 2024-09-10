@@ -1,0 +1,90 @@
+@charset "utf-8";
+
+body{
+    margin: 0;
+}
+/* header style start */
+header{
+    /* height: 3em; */
+    background-color: purple;
+    color: #fff;
+    overflow-x: hidden;
+}
+header >.profile-pic{
+    position: relative;
+    top: 0.5em;
+    left: 0.5em;
+    /* margin: 1em 0.5em; */
+}
+header > ul{
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    position: relative;
+    left: 4em;
+    top: 0.5em;
+}
+.option{
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 0.5em;
+    margin: auto 0.5em;
+}
+
+/* header style end  */
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+main{
+    
+    display: grid;
+    grid-template-columns: 40vw 1fr;
+    grid-template-rows: 1fr;
+}
+
+
+.contacts{
+    height: 100vh;
+    /* background-color: lawngreen; */
+}
+.users{
+    list-style-type: none;
+    padding-left: 0.5em;
+}
+.users > li{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.37);
+    border-radius: 2%;
+    margin: 0.5em;
+    overflow: hidden;
+}
+.info{
+    margin-right: 2em;
+    width: 100%;
+    /* border: 2px solid red; */
+    margin: 0;
+}
+.user-profile-pic{
+    width: 57px;
+    height: 57px;
+    border-radius: 50%;
+    background-color: #fff;
+    float: left;
+    border: 2px solid red;
+    margin: 0.5em;
+    cursor: pointer;
+}
+
+
+
+
+/* special class  */
+.active{
+    border-bottom: 3px solid #fff;
+}
+/* special class style end*/

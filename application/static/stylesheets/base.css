@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.flash-container{
+    position: absolute;
+    left: 40%;
+    z-index: 100;
+    /* text-align: center; */
+    }
+    
+.flash-msg{
+    background-color: blueviolet;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgb(40, 8, 70);
+    font-size: larger;
+}
+.flash-msg > span{
+    font-size: larger;
+    cursor: pointer;
+}
+
+.flash-msg > span:hover{
+    color: red;
+}

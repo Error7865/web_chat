@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #con{
+            width: 100vw;
+            height: 100vh;
+            background-color: sandybrown;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .item{
+            width: 200px;
+            height: 200px;
+            background-color: cadetblue;
+            transition: width 1s linear,
+            height 1s linear,
+            transform 1s linear,
+            top 1s linear,
+            left 1s linear;
+        }
+    </style>
+</head>
+<body>
+    <div id="con">
+        <div class="item">
+
+        </div>
+    </div>
+    <script>
+        document.querySelector('body').addEventListener('click', (e)=>{
+            let target=document.querySelector('.box1')
+            target.styel.flexGrow=1
+            alert('You just clicked.')
+        })
+
+        function setItem(reverse=false){
+            let item=document.querySelector('.item')
+            if()
+        }
+    </script>
+</body>
+</html>

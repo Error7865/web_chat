@@ -6,3 +6,5 @@ __pycache__/
 application/static/media/*
 #ignore webdriver
 webdriver/
+#ignore migrate 
+migrations/*
